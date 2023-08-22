@@ -25,3 +25,5 @@ docker-compose up
 ```bash
 yarn start:dev
 ```
+
+可以測試 GET localhost:3000/user 此 API，若回傳 `You got the user!` 則表示啟用成功
