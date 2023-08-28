@@ -1,10 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const COMPUTE_ROUTES_URL: string =
-  'https://routes.googleapis.com/directions/v2:computeRoutes';
-const GOOGLE_MAP_KEY: string = 'AIzaSyBhZ2bJSk1ARoJ2HrsOzG7azXc1YB4lNn8';
-const FIELD_MASK: string =
-  'routes.distanceMeters,routes.duration,routes.legs.stepsOverview.multiModalSegments.navigationInstruction,routes.legs.stepsOverview.multiModalSegments.travelMode,routes.legs.steps.distanceMeters,routes.legs.steps.navigationInstruction,routes.legs.steps.travelMode,routes.legs.steps.transitDetails.stopDetails.arrivalStop.name,routes.legs.steps.transitDetails.stopDetails.departureStop.name,routes.legs.steps.transitDetails.transitLine.name,routes.legs.steps.transitDetails.transitLine.vehicle.name,routes.legs.steps.transitDetails.transitLine.vehicle.type';
-
 type LatLng = {
   latitude: number;
   longitude: number;

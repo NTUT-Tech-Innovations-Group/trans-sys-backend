@@ -2,6 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { ComputeRoutesAPI } from './google-map-API';
 import './MapInterface';
 
+const GOOGLE_MAP_KEY: string = 'AIzaSyBhZ2bJSk1ARoJ2HrsOzG7azXc1YB4lNn8';
+const FIELD_MASK: string =
+  'routes.distanceMeters,routes.duration,routes.legs.stepsOverview.multiModalSegments.navigationInstruction,routes.legs.stepsOverview.multiModalSegments.travelMode,routes.legs.steps.distanceMeters,routes.legs.steps.navigationInstruction,routes.legs.steps.travelMode,routes.legs.steps.transitDetails.stopDetails.arrivalStop.name,routes.legs.steps.transitDetails.stopDetails.departureStop.name,routes.legs.steps.transitDetails.transitLine.name,routes.legs.steps.transitDetails.transitLine.vehicle.name,routes.legs.steps.transitDetails.transitLine.vehicle.type';
+
 const header: RequestHeader = {
   'X-Goog-Api-Key': GOOGLE_MAP_KEY,
   'Content-Type': 'application/json',
@@ -36,13 +40,15 @@ export class GoogleMapService {
 
     const computeRoutesApi = new ComputeRoutesAPI(body, header);
     const response = await computeRoutesApi.getRoutes();
-    let result: string[][];
+    const result: string[][] = [];
 
-    response.routes.forEach((route, routeIndex) => {
+    response.routes.forEach((route) => {
       route.legs.forEach((leg) => {
-        leg.stepsOverview.multiModalSegments.forEach((seg, segIndex) => {
-          result[routeIndex][segIndex] = seg.travelMode;
+        const travelmodes: string[] = [];
+        leg.stepsOverview.multiModalSegments.forEach((seg) => {
+          travelmodes.push(seg.travelMode);
         });
+        result.push(travelmodes);
       });
     });
 

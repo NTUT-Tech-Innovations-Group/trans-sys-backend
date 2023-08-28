@@ -1,6 +1,9 @@
 import axios from 'axios';
 import './MapInterface';
 
+const COMPUTE_ROUTES_URL: string =
+  'https://routes.googleapis.com/directions/v2:computeRoutes';
+
 export class ComputeRoutesAPI {
   private body: RequestBody;
   private header: RequestHeader;
