@@ -4,8 +4,8 @@ import { GoogleMapService } from './google-map.service';
 export class GoogleMapController {
   constructor(private readonly googleMapService: GoogleMapService) {}
 
-  @Get()
-  test(): string {
-    return this.googleMapService.test();
+  @Get('route')
+  getOverview(): Promise<string[][]> {
+    return this.googleMapService.getOverview();
   }
 }
