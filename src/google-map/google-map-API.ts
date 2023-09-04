@@ -1,17 +1,12 @@
 import axios from 'axios';
-import './MapInterface';
+import { RequestBody, RequestHeader, RouteAPIResponse } from '../interfaces';
 
 const COMPUTE_ROUTES_URL: string =
   'https://routes.googleapis.com/directions/v2:computeRoutes';
 
 export class ComputeRoutesAPI {
-  private body: RequestBody;
-  private header: RequestHeader;
 
-  constructor(_body: RequestBody, _header: RequestHeader) {
-    this.body = _body;
-    this.header = _header;
-  }
+  constructor(private body: RequestBody, private header: RequestHeader) {}
 
   async getRoutes(): Promise<RouteAPIResponse> {
     try {
