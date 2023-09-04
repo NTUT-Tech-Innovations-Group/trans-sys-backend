@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-type LatLng = {
-  latitude: number;
-  longitude: number;
-};
-
-type Locate = {
-  latLng: LatLng;
-};
 
 type Place = {
-  location: Locate;
+  location: 
+  {
+    latLng:{
+      latitude: number;
+      longitude: number;
+    };
+  };
 };
 
 type TravelMode = 'TRANSIT' | 'DRIVE' | 'BICYCLE' | 'WALK' | 'TWO_WHEELER';
@@ -76,3 +74,9 @@ type Route = {
 type RouteAPIResponse = {
   routes: Route[];
 };
+
+export{
+  RouteAPIResponse,
+  RequestBody,
+  RequestHeader
+}
